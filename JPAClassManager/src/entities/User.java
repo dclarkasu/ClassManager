@@ -16,8 +16,6 @@ public class User {
 	
 	private String password;
 	
-	//uni directional onetoone with teacher
-
 	//Gets and Sets
 
 	public String getUsername() {
