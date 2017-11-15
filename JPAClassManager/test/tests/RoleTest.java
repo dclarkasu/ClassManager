@@ -11,12 +11,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.ClassSchedule;
+import entities.Role;
 
-public class ClassScheduleTest {
+public class RoleTest {
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
-	ClassSchedule cs;
+	Role role;
 
 	@Before
 	public void setUp() {
@@ -36,10 +36,19 @@ public class ClassScheduleTest {
 	}
 
 	@Test
-	public void ClassRoster_Connected_To_DB() {
-		cs = em.find(ClassSchedule.class, 1);
-		assertEquals(cs.getClassRoster().getName(), "Spanish");
-		assertEquals(cs.getWeekDay().getName(), "Monday");
+	public void Role_Connected_To_DB() {
+		role = em.find(Role.class, 1);
+		assertEquals(role.getName(), "Hall Monitor");
+		assertEquals(role.getDescription(), "Walk it like you own it");
+	}
+
+	@Test
+	public void Role_To_Student() {
+		role = em.find(Role.class, 1);
+		assertEquals(role.getStudents().get(0).getFirstName(), "Lil Bobbie");
+		assertEquals(role.getStudents().get(0).getClassRoster().getName(), "Spanish");
+		assertEquals(role.getStudents().get(0).getGrade().getLevel(), 6);
+		assertNotNull(role.getStudentRoles());
 	}
 
 }
