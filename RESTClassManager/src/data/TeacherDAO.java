@@ -1,6 +1,7 @@
 package data;
 
-public class TeacherDAO {
+public interface TeacherDAO {
 	//Controls Teacher, User
+
 
 }

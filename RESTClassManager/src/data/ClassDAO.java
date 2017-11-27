@@ -1,6 +1,7 @@
 package data;
 
-public class ClassDAO {
+public interface ClassDAO {
 	//Will control ClassRoster, ClassSchedule, WeekDay
+
 
 }
