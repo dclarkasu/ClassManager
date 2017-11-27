@@ -55,14 +55,14 @@ public class TeacherTest {
 		assertEquals(teach.getClasses().get(0).getStudents().get(0).getFirstName(), "Lil Bobbie");
 		assertEquals(teach.getClasses().get(0).getStudents().get(0).getGrade().getLevel(), 6);
 		assertEquals(teach.getClasses().get(0).getStudents().get(0).getRoles().get(0).getName(), "Hall Monitor");
+		assertEquals(teach.getClasses().get(0).getStudents().get(0).getRoles().get(0).getStudents().get(0).getClassRoster().getName(), "Spanish");
 	}
 
-//	@Test
-//	public void test_Student_To_Roles() {
-//		teach = em.find(Teacher.class, 1);
-//		assertEquals(stud.getStudentRoles().get(0).getRole().getName(), "Hall Monitor");
-//		assertNotNull(stud.getRoles());
-//		assertEquals(stud.getRoles().get(0).getDescription(), "Walk it like you own it");
-//	}
+	@Test
+	public void test_Student_To_Roles() {
+		teach = em.find(Teacher.class, 1);
+		assertEquals(teach.getUser().getUsername(), "teacherlady");
+		assertEquals(teach.getUser().getPassword(), "pass1");
+	}
 
 }
