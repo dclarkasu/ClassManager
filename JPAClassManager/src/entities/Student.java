@@ -13,6 +13,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Student {
 	
@@ -25,14 +28,17 @@ public class Student {
 	private String lastName;
 	
 	//uni-directional
+	@JsonBackReference(value="classToStudent")
 	@ManyToOne
 	@JoinColumn(name="classID")
 	private ClassRoster classRoster;
 	
+	@JsonBackReference(value="gradeToStudent")
 	@ManyToOne
 	@JoinColumn(name="gradeID")
 	private Grade grade;
 	
+	@JsonIgnore
 	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name="student_role",
 	joinColumns=@JoinColumn(name="studentID"),
@@ -41,6 +47,7 @@ public class Student {
 	private List<Role> roles;
 	
 	//One to many student_role
+	@JsonIgnore
 	@OneToMany(mappedBy="student")
 	private List<StudentRole> studentRoles;
 

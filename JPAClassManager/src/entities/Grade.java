@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Grade {
 	
@@ -17,6 +19,7 @@ public class Grade {
 	
 	private int level;
 	
+	@JsonManagedReference(value="gradeToStudent")
 	@OneToMany(mappedBy="grade")
 	private List<Student> students;
 

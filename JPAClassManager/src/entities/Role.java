@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Role {
 	@Id
@@ -30,6 +32,7 @@ public class Role {
 	private List<StudentRole> studentRoles;
 	
 	//manytomany student
+	@JsonIgnore
 	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name="student_role",
 	joinColumns=@JoinColumn(name="roleID"),

@@ -15,6 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="Class")
 public class ClassRoster {
@@ -33,11 +36,13 @@ public class ClassRoster {
 	
 	
 	//bi-directional
+	@JsonBackReference(value="teacherToClass")
 	@ManyToOne
 	@JoinColumn(name="teacherID")
 	private Teacher teacher;
 	
 	//bi-directional
+	@JsonManagedReference(value="classToStudent")
 	@OneToMany(mappedBy="classRoster")
 	private List<Student> students;
 	
