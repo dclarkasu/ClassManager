@@ -1,7 +1,7 @@
 angular.module('appModule')
 .component('navbar',{
 	templateUrl: 'app/appModule/navbar/navbar.component.html',
-	controller: function($cookies, classService, $scope){
+	controller: function(classService){
 
 		var vm = this;
 
@@ -22,13 +22,17 @@ angular.module('appModule')
 //		};
 
 		vm.loadClassesByUser = function() {
+			console.log("pre load classes call");
 			classService.indexUserClasses()
 			.then(function(res) {
 				vm.classes = res.data;
+				console.log(res);
+				console.log(vm.classes);
 			})
 		};
-
+		
 		vm.loadClassesByUser();
+		
 		
 //		$scope.$on('createdGroup', function(ev, data) {
 //			vm.loadGroupsByUser();

@@ -25,7 +25,7 @@ public class TeacherController {
 	  return "pong";
 	}
 	
-	@RequestMapping(path="user/classes/{tid}", method=RequestMethod.GET)
+	@RequestMapping(path="user/{tid}/classes", method=RequestMethod.GET)
 	public List<ClassRoster> showClassesByTeacherId(HttpServletResponse res,@PathVariable int tid) {
 		List<ClassRoster> classes = teacherDAO.showClassesByTeacherId(tid);
 		System.out.println("in show classes controller");

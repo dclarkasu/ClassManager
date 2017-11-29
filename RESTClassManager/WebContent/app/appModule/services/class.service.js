@@ -1,12 +1,13 @@
 angular.module('appModule').factory('classService',
-		function($http, $cookies, $rootScope) { //add authService in future
+		function($http) { //add authService in future
 			var service = {};
 
 			service.indexUserClasses = function() {
 //				var id = $cookies.get("userId");
+				console.log("pre return promise");
 				return $http({
 					method : 'GET',
-					url : `rest/users/1/groups`
+					url : `rest/user/1/classes`
 				})
 			};
 
