@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -42,10 +43,12 @@ public class ClassRoster {
 	private Teacher teacher;
 	
 	//bi-directional
-	@JsonManagedReference(value="classToStudent")
+	@JsonIgnore
+//	@JsonManagedReference(value="classToStudent")
 	@OneToMany(mappedBy="classRoster")
 	private List<Student> students;
 	
+	@JsonIgnore
 	@ManyToMany(cascade= {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinTable(name="classSchedule",
 	joinColumns=@JoinColumn(name="classID"),
@@ -53,6 +56,7 @@ public class ClassRoster {
 	)
 	private List<WeekDay> weekDays;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="classRoster")
 	private List<ClassSchedule> classSchedules;
 

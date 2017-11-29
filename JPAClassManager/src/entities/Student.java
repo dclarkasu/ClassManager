@@ -28,7 +28,8 @@ public class Student {
 	private String lastName;
 	
 	//uni-directional
-	@JsonBackReference(value="classToStudent")
+	@JsonIgnore
+//	@JsonBackReference(value="classToStudent")
 	@ManyToOne
 	@JoinColumn(name="classID")
 	private ClassRoster classRoster;

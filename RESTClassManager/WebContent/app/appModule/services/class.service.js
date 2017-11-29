@@ -6,7 +6,7 @@ angular.module('appModule').factory('classService',
 //				var id = $cookies.get("userId");
 				return $http({
 					method : 'GET',
-					url : `rest/users/${id}/groups`
+					url : `rest/users/1/groups`
 				})
 			};
 

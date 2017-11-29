@@ -28,6 +28,7 @@ public class Role {
 	
 	
 	//One to many Student_role
+	@JsonIgnore
 	@OneToMany(mappedBy="role")
 	private List<StudentRole> studentRoles;
 	
