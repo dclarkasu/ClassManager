@@ -27,7 +27,6 @@ public class StudentController {
 	@RequestMapping(path="students", method=RequestMethod.GET)
 	public List<Student> indexStudents(HttpServletResponse res) {
 		List<Student> students = studentDAO.indexStudents();
-		System.out.println("test");
 		return students;
 	}
 	
